@@ -37,7 +37,12 @@ const Navbar = () => {
             <img src={logo} alt="logo" height="75" width="200" />
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "flex", md: "none" },
+            }}
+          >
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -46,7 +51,7 @@ const Navbar = () => {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              <MenuIcon style={{fill: "black"}}/>
+              <MenuIcon style={{ fill: "black" }} />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -68,7 +73,14 @@ const Navbar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center" color="black">
+                  <Typography
+                    textAlign="center"
+                    color="black"
+                    sx={{
+                      fontFamily: "Roboto",
+                      textTransform: "capitalize",
+                    }}
+                  >
                     {page}
                   </Typography>
                 </MenuItem>
@@ -79,16 +91,30 @@ const Navbar = () => {
             variant="h6"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
+            sx={{
+              flexGrow: 1,
+              display: { xs: "flex", md: "none" },
+            }}
           >
             <img src={logo} alt="logo" height="75" width="200" />
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }}}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
+            }}
+          >
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "black", display: "block"}}
+                sx={{
+                  my: 2,
+                  color: "black",
+                  display: "block",
+                  fontFamily: "Roboto",
+                  textTransform: "none",
+                }}
               >
                 {page}
               </Button>
