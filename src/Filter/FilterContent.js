@@ -4,7 +4,6 @@ import PublishIcon from "@mui/icons-material/Publish";
 import Date from "./Date";
 
 function FilterContent() {
-
   return (
     <Grid
       container
@@ -25,8 +24,7 @@ function FilterContent() {
         </Typography>
       </Grid>
       <Grid item xs={6}>
-        <Typography>Date :</Typography>
-        <Date/>
+        <Typography align="center">Date : <Date/></Typography>
       </Grid>
     </Grid>
   );
