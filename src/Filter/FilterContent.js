@@ -1,8 +1,10 @@
 import { Typography, Grid, Button } from "@mui/material";
 import * as React from "react";
 import PublishIcon from "@mui/icons-material/Publish";
+import Date from "./Date";
 
 function FilterContent() {
+
   return (
     <Grid
       container
@@ -23,15 +25,8 @@ function FilterContent() {
         </Typography>
       </Grid>
       <Grid item xs={6}>
-        <Typography>
-          Date :
-          <DesktopDatePicker
-            inputFormat="dd/MM/yyyy"
-            value={value}
-            onChange={handleChange}
-            renderInput={(params) => <TextField {...params} />}
-          />
-        </Typography>
+        <Typography>Date :</Typography>
+        <Date/>
       </Grid>
     </Grid>
   );
