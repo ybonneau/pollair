@@ -1,32 +1,17 @@
-import {
-  Box,
-  FormControl,
-  Select,
-  MenuItem,
-  Typography,
-} from "@mui/material";
+import { Box, FormControl, Select, MenuItem, Typography } from "@mui/material";
 import * as React from "react";
 
-const polluants = [
-  ["PM10", 1],
-  ["PM2.5", 2],
-  ["O3", 3],
-  ["NO2", 4],
-  ["SO2", 5],
-];
+const polluants = ["PM10", "PM2.5","O3", "NO2", "SO2"];
 
-function InputPolluant({ updatePolluant }) {
-  const [polluant, setPolluant] = React.useState([
-    polluants[0][0],
-    polluants[0][1],
-  ]);
+function InputPolluant() {
+  const [polluant, setPolluant] = React.useState([polluants[0]]);
 
   return (
     <>
       <Typography variant="button" sx={{ display: "block" }} gutterBottom>
         Type de polluant :
       </Typography>
-      <Box sx={{ minWidth: 120 }}>
+      <Box sx={{width: "40%"}}>
         <FormControl fullWidth>
           <Select
             labelId="polluantl"
@@ -34,12 +19,11 @@ function InputPolluant({ updatePolluant }) {
             value={polluant}
             onChange={(newPolluant) => {
               setPolluant(newPolluant.target.value);
-              updatePolluant(newPolluant.target.value);
             }}
           >
             {polluants.map((polluant) => (
-              <MenuItem key={polluant[1]} value={polluant}>
-                {polluant[0]}
+              <MenuItem key={polluant} value={polluant}>
+                {polluant}
               </MenuItem>
             ))}
           </Select>

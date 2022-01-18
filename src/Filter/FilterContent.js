@@ -7,7 +7,7 @@ import InputPolluant from "./InputPolluant";
 function FilterContent({ polluant }) {
   return (
     <Grid container alignItems="center" justifyContent="left">
-      <Grid item xs={6}>
+      <Grid item xs={12}>
         <Typography variant="button" sx={{ display: "block" }} gutterBottom>
           Importer vos données Tracemob :
         </Typography>
@@ -16,18 +16,14 @@ function FilterContent({ polluant }) {
           startIcon={<SaveIcon />}
         >
           Importer
+          <input type="file" hidden />
         </Button>
       </Grid>
-      <Grid item xs={6}>
-        <Date />
-      </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={6} sx={{ marginTop: 2 }}>
         <InputPolluant updatePolluant={polluant} />
       </Grid>
-      <Grid item xs={9}>
-        <Button variant="contained" sx={{ backgroundColor: "#0bbbd7", margin: "auto" }}>
-          Générer histogramme
-        </Button>
+      <Grid item xs={6} sx={{ marginTop: 2 }}>
+        <Date />
       </Grid>
     </Grid>
   );
