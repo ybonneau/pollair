@@ -18,7 +18,7 @@ function MapFrame() {
   //  GeoJson API (read from flat .json file in public directory)
   useEffect( () => {
 
-    fetch('/mock-geojson-api.json')
+    fetch('./map.geojson')
       .then(response => response.json())
       .then( (fetchedFeatures) => {
 
