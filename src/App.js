@@ -8,6 +8,7 @@ function App() {
   return (
     <>
       <Navbar />
+      <br></br>
       <Pollair />
     </>
   );
