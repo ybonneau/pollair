@@ -1,7 +1,7 @@
 import "./App.css";
 import Filter from "./Filter/Filter";
 import Navbar from "./Navbar/Navbar";
-import MapFrame from "./Map/Frame";
+import MapFrame from "./Map/MapFrame";
 
 function App() {
   return (
