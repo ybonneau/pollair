@@ -2,17 +2,12 @@ import { Typography, Grid, Button } from "@mui/material";
 import * as React from "react";
 import PublishIcon from "@mui/icons-material/Publish";
 import Date from "./Date";
+import InputPolluant from "./InputPolluant";
 
-function FilterContent() {
+function FilterContent({polluant}) {
   return (
-    <Grid
-      container
-      alignItems="center"
-      justifyContent="center"
-      rowSpacing={2}
-      columnSpacing={4}
-    >
-      <Grid item xs={6}>
+    <Grid container alignItems="center" justifyContent="center">
+      <Grid item xs={5}>
         <Typography>
           Importer vos données Tracemob :{" "}
           <Button
@@ -23,8 +18,11 @@ function FilterContent() {
           </Button>
         </Typography>
       </Grid>
-      <Grid item xs={6}>
-        <Typography align="center">Date : <Date/></Typography>
+      <Grid item xs={7}>
+        <Date />
+      </Grid>
+      <Grid item xs={12} sx={{marginTop: 5}}>
+        <InputPolluant updatePolluant={polluant}/>
       </Grid>
     </Grid>
   );
