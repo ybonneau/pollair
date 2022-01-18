@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid } from "@mui/material";
+import { Stack } from "@mui/material";
 import { Box } from "@mui/material";
 
 // openlayers
@@ -8,6 +8,7 @@ import Feature from 'ol/Feature';
 
 // components
 import Map from './Map'
+import Details from './Details'
 
 function MapFrame() {
   
@@ -39,27 +40,30 @@ function MapFrame() {
   },[])
 
   return (
-    <>
-    <Grid container>
-        <Grid item xs={4}>
-        </Grid>
-        <Grid item xs={8}>
-            <Box
-                sx={{
-                boxShadow: 2,
-                width: "50vw",
-                bgcolor: "white",
-                marginLeft: "auto",
-                marginRight: "auto",
-                marginTop: "5vh",
-                fontFamily: "Roboto",
-                }}
-            >
-                <Map features={features} />
-            </Box>
-        </Grid>
-    </Grid>
-    </>
+    <Box
+        sx={{
+          width: "90vw",
+          marginLeft: "auto",
+          marginRight: "auto",
+          marginTop: "5vh",
+          marginBottom: "5vh",
+          paddingTop: "2vh",
+          paddingBottom: "2vh"
+        }}
+    >
+      <Stack spacing={4} direction="row">
+        <Details />
+        <Box
+          sx={{
+          boxShadow: 2,
+          width: "120vw",
+          bgcolor: "white"
+          }}
+        >
+          <Map features={features} />
+        </Box>
+      </Stack>
+    </Box>
   );
 }
 
