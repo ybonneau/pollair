@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import DateRangePicker from "@mui/lab/DateRangePicker";
 import { Box, Typography } from "@mui/material";
 
-function Date({ updateDate }) {
+function Date() {
   const [value, setValue] = React.useState([null, null]);
 
   return (
@@ -13,14 +13,13 @@ function Date({ updateDate }) {
       <Typography variant="button" sx={{ display: "block" }} gutterBottom>
         Date :
       </Typography>
-      <LocalizationProvider dateAdapter={DateAdapter}>
+      <LocalizationProvider disableEnforceFocus dateAdapter={DateAdapter}>
         <DateRangePicker
           startText="Date de début"
           endText="Date de fin"
           value={value}
           onChange={(newValue) => {
             setValue(newValue);
-            updateDate(newValue);
           }}
           renderInput={(startProps, endProps) => (
             <React.Fragment>

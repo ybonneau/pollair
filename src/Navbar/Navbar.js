@@ -113,7 +113,6 @@ const Navbar = () => {
                   color: "black",
                   display: "block",
                   fontFamily: "Roboto",
-                  textTransform: "none",
                 }}
               >
                 {page}

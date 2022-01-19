@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Grid, Button, Box} from "@mui/material";
+import { Button, Box } from "@mui/material";
 
 function Generator() {
   return (
@@ -11,9 +11,20 @@ function Generator() {
         paddingTop: 2,
       }}
     >
-      <Button sx={{backgroundColor: "#0bbbd7", }} variant="contained">Générer Histogramme</Button>
+      <Button
+        sx={{
+          backgroundColor: "#0bbbd7",
+          ":hover": {
+            bgcolor: "#d9d9d9",
+            color: "black",
+          },
+        }}
+        variant="contained"
+      >
+        Générer Histogramme
+      </Button>
     </Box>
-  )
+  );
 }
 
-export default Generator
+export default Generator;

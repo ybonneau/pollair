@@ -45,7 +45,7 @@ function MapFrame() {
           width: "90vw",
           marginLeft: "auto",
           marginRight: "auto",
-          marginTop: "5vh",
+          marginTop: "5",
           marginBottom: "5vh",
           paddingTop: "2vh",
           paddingBottom: "2vh"
