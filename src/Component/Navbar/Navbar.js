@@ -9,9 +9,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import logo from "../../src/Logo/logo_menu.png";
+import logo from "../../Logo/logo_menu.png";
+import { Link } from "react-router-dom";
 
-const pages = ["Accueil", "PollAir c'est quoi ?"];
+const pages = [
+  ["Accueil", "../home"],
+  ["PollAir c'est quoi ?", "../about"],
+];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -105,18 +109,20 @@ const Navbar = () => {
             }}
           >
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{
-                  my: 2,
-                  color: "black",
-                  display: "block",
-                  fontFamily: "Roboto",
-                }}
-              >
-                {page}
-              </Button>
+              <Link key={page} to={page[1]} style={{ textDecoration: 'none' }}>
+                <Button
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                  sx={{
+                    my: 2,
+                    color: "black",
+                    display: "block",
+                    fontFamily: "Roboto",
+                  }}
+                >
+                  {page[0]}
+                </Button>
+              </Link>
             ))}
           </Box>
         </Toolbar>
