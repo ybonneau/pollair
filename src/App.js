@@ -1,16 +1,16 @@
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import Filter from "./Filter/Filter";
-import Generator from "./Filter/Generator";
-import Navbar from "./Navbar/Navbar";
-import MapFrame from "./Map/MapFrame";
-import Accueil from "./Login/accueil"
+import About from "./Component/About/About";
+import Home from "./Component/Home/Home";
+import Login from "./Component/Login/Login";
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <Accueil/>
-    </>
+    <Routes>
+      <Route path="/" element={<Login/>}/>
+      <Route path="/home" element={<Home/>}/>
+      <Route path="/about" element={<About/>}/>
+    </Routes>
   );
 }
 
