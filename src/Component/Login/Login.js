@@ -30,7 +30,7 @@ function Login() {
         </Grid>
         <Stack spacing={2}>
           <TextField label="ID" placeholder="Identifiant" fullWidth required />
-          <Link to="/home" style={{ textDecoration: 'none' }}>
+          <Link to="/home" style={{ textDecoration: "none" }}>
             <Button
               type="submit"
               variant="contained"
@@ -40,18 +40,17 @@ function Login() {
               Connexion
             </Button>
           </Link>
-          <Link to="/home" style={{ textDecoration: 'none' }}>
+          <Link to="/home" style={{ textDecoration: "none" }}>
             <Button
               type="submit"
               variant="contained"
               style={{ background: "#0bbbd7" }}
               fullWidth
-              onClick={
-                () => fetch("http://localhost:8080/personne/createpersonne")
-                .then(res => {
-                    console.log(res.json());
-                })
-            }
+              onClick={() =>
+                fetch("http://localhost:8080/personne/createpersonne")
+                .then(res => res.json())
+                .then(result => setId(result.data))
+              }
             >
               Générer un ID
             </Button>
