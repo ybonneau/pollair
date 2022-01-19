@@ -5,6 +5,7 @@ import Date from "./Date";
 import InputPolluant from "./InputPolluant";
 
 function FilterContent({ polluant }) {
+  
   return (
     <Grid container alignItems="center" justifyContent="left">
       <Grid item xs={12}>
