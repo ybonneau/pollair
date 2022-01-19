@@ -1,11 +1,18 @@
 import * as React from "react";
-import {Grid} from "@mui/material";
+import {Grid, Button, Box} from "@mui/material";
 
 function Generator() {
   return (
-    <Grid>
-    
-    </Grid>
+    <Box
+      sx={{
+        width: "50vw",
+        margin: "auto",
+        textAlign: "center",
+        paddingTop: 2,
+      }}
+    >
+      <Button sx={{backgroundColor: "#0bbbd7", }} variant="contained">Générer Histogramme</Button>
+    </Box>
   )
 }
 
