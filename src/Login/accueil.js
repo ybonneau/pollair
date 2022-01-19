@@ -13,7 +13,6 @@ function Accueil() {
     const avatarStyle = { backgroundColor: "#1bbd7e" };
     const [ID, setId] = React.useState(0);
 
-    console.log(ID)
     return (
         <Grid>
             <Paper
@@ -27,7 +26,7 @@ function Accueil() {
                     </Avatar>
                     <h2>Connexion</h2>
                 </Grid>
-                <TextField label="ID" placeholder="champs id" fullWidth required />
+                <TextField label="ID" placeholder="Identifiant" fullWidth required />
                 <p></p>
                 <Button
                     type="submit"
@@ -45,15 +44,12 @@ function Accueil() {
                     fullWidth
                     onClick={
                         () => fetch("http://localhost:8080/personne/createpersonne")
-                        .then(res => res.json())
-                        .then(
-                            (result) => {
-                                this.setState({
-                                    ID: result.ID,
-                                });
-                            })}
+                        .then(res => {
+                            console.log(res.json());
+                        })
+                    }
                 >
-                    Générer un ID{" "}
+                    Générer un ID
                 </Button>
             </Paper>
         </Grid>
