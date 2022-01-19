@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Login() {
   const paperStyle = { padding: 20, width: 280, margin: "20px auto" };
   const avatarStyle = { backgroundColor: "#0bbbd7" };
-  const [ID, setId] = React.useState(0);
+  const [id, setId] = React.useState("");
 
   return (
     <Grid
@@ -29,11 +29,24 @@ function Login() {
           <h2>Connexion</h2>
         </Grid>
         <Stack spacing={2}>
-          <TextField label="ID" placeholder="Identifiant" fullWidth required />
-          <Link to="/home" style={{ textDecoration: "none" }}>
+          <TextField
+            label="ID"
+            placeholder="Identifiant"
+            onChange={(value) => {
+              setId(value.target.value);
+            }}
+            fullWidth
+            required
+          />
+          <Link
+            to={id !== "" ? '/home' : '#'}
+            state={{ id: id }}
+            style={{ textDecoration: "none" }}
+          >
             <Button
               type="submit"
               variant="contained"
+              disabled={id === ""}
               style={{ background: "#0bbbd7" }}
               fullWidth
             >
@@ -46,11 +59,6 @@ function Login() {
               variant="contained"
               style={{ background: "#0bbbd7" }}
               fullWidth
-              onClick={() =>
-                fetch("http://localhost:8080/personne/createpersonne")
-                .then(res => res.json())
-                .then(result => setId(result.data))
-              }
             >
               Générer un ID
             </Button>

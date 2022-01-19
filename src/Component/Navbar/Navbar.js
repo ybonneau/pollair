@@ -76,18 +76,24 @@ const Navbar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography
-                    textAlign="center"
-                    color="black"
-                    sx={{
-                      fontFamily: "Roboto",
-                      textTransform: "capitalize",
-                    }}
-                  >
-                    {page}
-                  </Typography>
-                </MenuItem>
+                <Link
+                  key={page}
+                  to={page[1]}
+                  style={{ textDecoration: "none" }}
+                >
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Typography
+                      textAlign="center"
+                      color="black"
+                      sx={{
+                        fontFamily: "Roboto",
+                        textTransform: "capitalize",
+                      }}
+                    >
+                      {page[0]}
+                    </Typography>
+                  </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>
@@ -109,7 +115,7 @@ const Navbar = () => {
             }}
           >
             {pages.map((page) => (
-              <Link key={page} to={page[1]} style={{ textDecoration: 'none' }}>
+              <Link key={page} to={page[1]} style={{ textDecoration: "none" }}>
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
