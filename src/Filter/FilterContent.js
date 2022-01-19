@@ -10,6 +10,7 @@ const Input = styled("input")({
 });
 
 function FilterContent({ polluant }) {
+  
   return (
     <Grid container alignItems="center" justifyContent="left">
       <Grid item xs={12}>
