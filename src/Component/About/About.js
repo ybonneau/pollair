@@ -1,6 +1,6 @@
 import React from "react";
-import Navbar from "../Navbar/Navbar";
 import Pollair from "../Pollair/Pollair";
+import Navbar from "../Navbar/Navbar";
 
 function About() {
   return (

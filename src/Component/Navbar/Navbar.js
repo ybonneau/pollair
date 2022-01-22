@@ -11,6 +11,8 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import logo from "../../Logo/logo_menu.png";
 import { Link } from "react-router-dom";
+import UserProfile from "../UserProfile/UserProfile";
+import { useNavigate } from "react-router-dom";
 
 const pages = [
   ["Accueil", "../home"],
@@ -19,6 +21,7 @@ const pages = [
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  let navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -28,6 +31,18 @@ const Navbar = () => {
     setAnchorElNav(null);
   };
 
+  function deconnexion() {
+    UserProfile.setId("");
+    navigate("/");
+  }
+
+  React.useEffect(() => {
+    if (UserProfile.getId() === "") {
+      navigate("/");
+    }
+  }, []);
+
+  console.log(UserProfile.getId());
   return (
     <AppBar sx={{ bgcolor: "white" }} position="static">
       <Container maxWidth="xl">
@@ -131,6 +146,26 @@ const Navbar = () => {
               </Link>
             ))}
           </Box>
+          {UserProfile.getId() !== "" && (
+            <Box sx={{ flexGrow: 0, fontFamily: "Roboto" }}>
+              <Button
+                sx={{
+                  backgroundColor: "#0bbbd7",
+                  textTransform: "capitalize",
+                  ":hover": {
+                    bgcolor: "#d9d9d9",
+                    color: "black",
+                  },
+                }}
+                onClick={() => {
+                  deconnexion();
+                }}
+                color="inherit"
+              >
+                ID:{UserProfile.getId()}
+              </Button>
+            </Box>
+          )}
         </Toolbar>
       </Container>
     </AppBar>
