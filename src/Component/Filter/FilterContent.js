@@ -4,6 +4,7 @@ import SaveIcon from "@mui/icons-material/Save";
 import { styled } from "@mui/material/styles";
 import Date from "./Date";
 import InputPolluant from "./InputPolluant";
+import UserProfile from "../UserProfile/UserProfile";
 
 const Input = styled("input")({
   display: "none",
@@ -11,10 +12,10 @@ const Input = styled("input")({
 
 function FilterContent({ polluant }) {
 
-
   async function upload(event) {
     const formData = new FormData();
     formData.append('file', event.target.files[0]);
+    formData.append('id', UserProfile.getId());
     await fetch("http://localhost:8080/fileshandler/uploadone",{
       method: 'POST',
       body: formData
