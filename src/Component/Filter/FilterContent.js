@@ -10,6 +10,22 @@ const Input = styled("input")({
 });
 
 function FilterContent({ polluant }) {
+
+
+  async function upload(event) {
+    const formData = new FormData();
+    formData.append('file', event.target.files[0]);
+    await fetch("http://localhost:8080/fileshandler/uploadone",{
+      method: 'POST',
+      body: formData
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result.status)
+      }
+      );
+  }
+
   
   return (
     <Grid container alignItems="center" justifyContent="left">
@@ -23,6 +39,7 @@ function FilterContent({ polluant }) {
             id="contained-button-file"
             multiple
             type="file"
+            onChange={upload}
           />
           <Button
             variant="contained"
