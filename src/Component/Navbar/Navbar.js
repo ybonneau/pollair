@@ -147,6 +147,10 @@ const Navbar = () => {
             ))}
           </Box>
           {UserProfile.getId() !== "" && (
+            <>
+            <Box sx={{ flexGrow: 0, fontFamily: "Roboto",marginRight: 2 }}>
+              <Typography sx={{color: "black"}} >ID:{UserProfile.getId()}</Typography>
+            </Box>
             <Box sx={{ flexGrow: 0, fontFamily: "Roboto" }}>
               <Button
                 sx={{
@@ -162,9 +166,10 @@ const Navbar = () => {
                 }}
                 color="inherit"
               >
-                ID:{UserProfile.getId()}
+                Déconnexion
               </Button>
             </Box>
+            </>
           )}
         </Toolbar>
       </Container>
