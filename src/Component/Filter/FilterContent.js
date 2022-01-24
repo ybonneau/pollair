@@ -12,7 +12,7 @@ const Input = styled("input")({
   display: "none",
 });
 
-function FilterContent({ polluant }) {
+function FilterContent({ polluant, trajets }) {
   const [open, setOpen] = React.useState(false);
   const [error, setError] = React.useState(false);
 
@@ -58,30 +58,28 @@ function FilterContent({ polluant }) {
   async function downloadTrajets() {
     await fetch("http://localhost:8080/personne/trajets/" + UserProfile.getId())
       .then((response) => response.json())
-      .then((res) =>
-        { 
-          res.trajets.forEach((trajet) => {
-            const geoJson = {
-              type: "FeatureCollection",
-              features: [
-                trajet.locations.map((point) => {
-                  return {
-                    type: "Feature",
-                    properties: {},
-                    geometry: {
-                      type: "Point",
-                      coordinates: [
-                        point.data.loc.coordinates[0],
-                        point.data.loc.coordinates[1],
-                      ],
-                    },
-                  }
-                })
-              ]
-            }
-            UserProfile.addTrajet(geoJson);
-        }) }
-      );
+      .then((res) => {
+        res.trajets.forEach((trajet) => {
+          const geoJson = {
+            type: "FeatureCollection",
+            features: trajet.locations.map((point) => {
+              return {
+                type: "Feature",
+                properties: {},
+                geometry: {
+                  type: "Point",
+                  coordinates: [
+                    point.data.loc.coordinates[0],
+                    point.data.loc.coordinates[1],
+                  ],
+                },
+              };
+            }),
+          };
+          UserProfile.addTrajet(geoJson);
+        });
+        trajets(UserProfile.getTrajets())
+      });
   }
 
   return (

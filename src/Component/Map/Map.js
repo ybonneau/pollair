@@ -9,15 +9,14 @@ import TileLayer from 'ol/layer/Tile'
 import VectorLayer from 'ol/layer/Vector'
 import VectorSource from 'ol/source/Vector'
 import OSM from 'ol/source/OSM'
-import {transform, fromLonLat} from 'ol/proj'
-import {toStringXY} from 'ol/coordinate';
+import {fromLonLat} from 'ol/proj'
+import GeoJSON from 'ol/format/GeoJSON'
 
 function MapWrapper(props) {
 
   // set intial state
   const [ map, setMap ] = useState()
   const [ featuresLayer, setFeaturesLayer ] = useState()
-  const [ selectedCoord , setSelectedCoord ] = useState()
 
   // pull refs
   const mapElement = useRef()
@@ -29,6 +28,7 @@ function MapWrapper(props) {
 
   // initialize map on first render - logic formerly put into componentDidMount
   useEffect( () => {
+
 
     // create and add vector source layer
     const initalFeaturesLayer = new VectorLayer({
@@ -55,9 +55,6 @@ function MapWrapper(props) {
       controls: []
     })
 
-    // set map onclick handler
-    initialMap.on('click', handleMapClick)
-
     // save map and vector layer references to state
     setMap(initialMap)
     setFeaturesLayer(initalFeaturesLayer)
@@ -66,14 +63,19 @@ function MapWrapper(props) {
 
   // update map if features prop changes - logic formerly put into componentDidUpdate
   useEffect( () => {
-
     if (props.features.length) { // may be null on first render
-      console.log('toto')
+      
+      const wktOptions = {
+        dataProjection: 'EPSG:4326',
+        featureProjection: 'EPSG:3857'
+      }
+  
+      const test  = new GeoJSON().readFeatures(props.features[0],wktOptions)
 
       // set features to map
       featuresLayer.setSource(
         new VectorSource({
-          features: props.features // make sure features is an array
+          features: test // make sure features is an array
         })
       )
 
@@ -85,21 +87,6 @@ function MapWrapper(props) {
     }
 
   },[props.features])
-
-  // map click handler
-  const handleMapClick = (event) => {
-    
-    // get clicked coordinate using mapRef to access current React state inside OpenLayers callback
-    //  https://stackoverflow.com/a/60643670
-    const clickedCoord = mapRef.current.getCoordinateFromPixel(event.pixel);
-
-    // transform coord to EPSG 4326 standard Lat Long
-    const transormedCoord = transform(clickedCoord, 'EPSG:3857', 'EPSG:4326')
-
-    // set React state
-    setSelectedCoord( transormedCoord )
-    
-  }
 
   // render component
   return (           

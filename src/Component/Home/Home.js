@@ -5,12 +5,13 @@ import MapFrame from "../Map/MapFrame";
 import Navbar from "../Navbar/Navbar";
 
 function Home() {
+  const [trajets, setTrajets] = React.useState([])
   return (
     <>
       <Navbar />
-      <Filter />
+      <Filter updateTrajets={setTrajets}/>
       <Generator />
-      <MapFrame />
+      <MapFrame trajets={trajets}/>
     </>
   );
 }
