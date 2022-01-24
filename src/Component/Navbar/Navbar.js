@@ -42,7 +42,6 @@ const Navbar = () => {
     }
   }, []);
 
-  console.log(UserProfile.getId());
   return (
     <AppBar sx={{ bgcolor: "white" }} position="static">
       <Container maxWidth="xl">

@@ -68,6 +68,7 @@ function MapWrapper(props) {
   useEffect( () => {
 
     if (props.features.length) { // may be null on first render
+      console.log('toto')
 
       // set features to map
       featuresLayer.setSource(
