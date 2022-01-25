@@ -11,6 +11,9 @@ import VectorSource from "ol/source/Vector";
 import OSM from "ol/source/OSM";
 import { fromLonLat } from "ol/proj";
 import GeoJSON from "ol/format/GeoJSON";
+import Icon from 'ol/style/Icon';
+import Stroke from 'ol/style/Stroke';
+import Style from 'ol/style/Style';
 
 function MapWrapper(props) {
   // set intial state
@@ -25,7 +28,6 @@ function MapWrapper(props) {
   const mapRef = useRef();
   mapRef.current = map;
 
-  const traitement = () => {};
 
   // initialize map on first render - logic formerly put into componentDidMount
   useEffect(() => {
@@ -93,6 +95,22 @@ function MapWrapper(props) {
       };
 
       const test = new GeoJSON().readFeatures(trajetGeoJson, wktOptions);
+
+      test[0].setStyle(new Style({
+        image: new Icon(({
+          color: '#8FCE00',
+          crossOrigin: 'anonymous',
+          src: 'https://openlayers.org/en/v6.12.0/examples/data/dot.png'
+        }))
+      }));
+
+      test[test.length-1].setStyle(new Style({
+        image: new Icon(({
+          color: '#F44336',
+          crossOrigin: 'anonymous',
+          src: 'https://openlayers.org/en/v6.12.0/examples/data/dot.png'
+        }))
+      }));
 
       // set features to map
       featuresLayer.setSource(
