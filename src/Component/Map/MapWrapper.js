@@ -71,7 +71,6 @@ function MapWrapper(props) {
         target = props.trajets.find(
           (trajet) => trajet.cleaned_section._id.$oid === props.select
         );
-        console.log(target);
       } else {
         target = props.trajets[0];
       }
@@ -107,7 +106,7 @@ function MapWrapper(props) {
         padding: [100, 100, 100, 100],
       });
     }
-  }, [props.select]);
+  }, [props.select, props.trajets]);
 
   // render component
   return <div ref={mapElement} className="map-container" />;
