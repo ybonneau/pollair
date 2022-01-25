@@ -11,7 +11,8 @@ import VectorSource from "ol/source/Vector";
 import OSM from "ol/source/OSM";
 import { fromLonLat } from "ol/proj";
 import GeoJSON from "ol/format/GeoJSON";
-import Icon from 'ol/style/Icon'
+import Icon from 'ol/style/Icon';
+import Stroke from 'ol/style/Stroke';
 import Style from 'ol/style/Style';
 
 function MapWrapper(props) {
@@ -103,7 +104,7 @@ function MapWrapper(props) {
         }))
       }));
 
-      test[-1].setStyle(new Style({
+      test[test.length-1].setStyle(new Style({
         image: new Icon(({
           color: '#F44336',
           crossOrigin: 'anonymous',
