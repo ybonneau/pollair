@@ -3,10 +3,11 @@ import { Stack } from "@mui/material";
 import { Box } from "@mui/material";
 
 // components
-import Map from './Map'
+import Map from './MapWrapper'
 import Details from './Details'
 
 function MapFrame({trajets}) {
+  const [select, setSelect] = React.useState([])
   return (
     <Box
         sx={{
@@ -16,11 +17,11 @@ function MapFrame({trajets}) {
           marginTop: "5",
           marginBottom: "5vh",
           paddingTop: "2vh",
-          paddingBottom: "2vh"
+          paddingBottom: "2vh",
         }}
     >
       <Stack spacing={4} direction="row">
-        <Details />
+        <Details list={trajets} select={setSelect}/>
         <Box
           sx={{
           boxShadow: 2,
@@ -28,7 +29,7 @@ function MapFrame({trajets}) {
           bgcolor: "white"
           }}
         >
-          <Map features={trajets} />
+          <Map trajets={trajets} select={select}/>
         </Box>
       </Stack>
     </Box>

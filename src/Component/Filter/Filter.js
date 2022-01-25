@@ -2,7 +2,7 @@ import * as React from "react";
 import { Box } from "@mui/material";
 import FilterContent from "./FilterContent";
 
-function Filter({updatePolluant, updateTrajets}) {
+function Filter({updatePolluant ,updateTrajets}) {
   return (
     <>
       <Box
