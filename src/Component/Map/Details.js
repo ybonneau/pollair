@@ -5,7 +5,6 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { Typography } from "@mui/material";
 import Divider from "@mui/material/Divider";
-import moment from "moment";
 
 export default function Details({ list, select }) {
   const [selectedIndex, setSelectedIndex] = React.useState();
@@ -14,6 +13,13 @@ export default function Details({ list, select }) {
     setSelectedIndex(id);
     select(id);
   };
+  
+  React.useEffect(() => {
+    if(list.length) {
+      setSelectedIndex(list[0].cleaned_section._id.$oid)
+    }
+  }, [list])
+  
 
   return (
     <List
@@ -29,7 +35,6 @@ export default function Details({ list, select }) {
     >
       {list !== 0 &&
         list.map((trajet) => {
-          console.log(selectedIndex);
           const date = trajet.cleaned_section.data.start_local_dt;
           const displayDate =
             date.day.toString().padStart(2, "0") +
