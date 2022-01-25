@@ -2,7 +2,7 @@ import * as React from "react";
 import { Box } from "@mui/material";
 import FilterContent from "./FilterContent";
 
-function Filter({updatePolluant}) {
+function Filter({updatePolluant ,updateTrajets}) {
   return (
     <>
       <Box
@@ -23,7 +23,7 @@ function Filter({updatePolluant}) {
           fontFamily: "Roboto",
         }}
       >
-        <FilterContent polluant={updatePolluant}/>
+        <FilterContent polluant={updatePolluant} trajets={updateTrajets}/>
       </Box>
     </>
   );
