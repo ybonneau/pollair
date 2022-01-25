@@ -8,6 +8,8 @@ import UserProfile from "../UserProfile/UserProfile";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 
+var timerGetTrajets;
+
 const Input = styled("input")({
   display: "none",
 });
@@ -46,7 +48,38 @@ function FilterContent({ polluant, trajets }) {
       .then((result) => {
         if (result.status === 200) {
           setOpen(true);
-          downloadTrajets();
+          //downloadTrajets();
+
+          //lancement attente pour récup les trajets 
+          //TODO une popup pour l'utilisateur ou un indice pour montrer que le fichier est en traitement.
+
+          if(timerGetTrajets !== undefined){
+            //clearTimeout(timerGetTrajets)
+            clearInterval(timerGetTrajets);
+          }
+
+          
+          timerGetTrajets = setInterval(async function () {
+            await fetch("http://localhost:8080/personne/etatfile/" +UserProfile.getId() + "/" + event.target.files[0].name)
+            .then((response) => response.json())
+            .then((result) => { 
+              if (result.status === 200){
+                if(result.data === 2){
+                  console.log("traitement complet");//debug
+                  //chargement des trajets
+                  downloadTrajets();
+                  clearInterval(timerGetTrajets);
+                }
+              }else{
+                //todo info à l'utilisateur
+                console.log("erreur sur le fichier");
+                clearInterval(timerGetTrajets);
+              }
+
+            });
+        }, 10000);
+
+
         } else {
           setError(true);
         }
