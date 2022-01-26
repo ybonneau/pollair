@@ -8,7 +8,8 @@ function Generator(props) {
 
   function histogramme() {
     navigate("/histogramme");
-    console.log(props.trajets)
+    console.log(props.trajets[0].locations)
+      
   }
   return (
     <Box
