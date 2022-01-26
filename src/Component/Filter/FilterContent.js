@@ -130,9 +130,6 @@ function FilterContent({ polluant, trajets }) {
         <Grid item xs={6} sx={{ marginTop: 2 }}>
           <InputPolluant updatePolluant={polluant} />
         </Grid>
-        <Grid item xs={6} sx={{ marginTop: 2 }}>
-          <Date />
-        </Grid>
       </Grid>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
