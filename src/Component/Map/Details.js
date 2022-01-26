@@ -33,6 +33,7 @@ export default function Details({ list, select }) {
         borderColor: "#d9d9d9",
         maxHeight: "80vh",
         overflow: "auto",
+        padding: 0
       }}
     >
       {list !== 0 &&
@@ -53,6 +54,10 @@ export default function Details({ list, select }) {
               <ListItemButton
                 selected={selectedIndex === trajet.cleaned_section._id.$oid}
                 onClick={handlerSelect(trajet.cleaned_section._id.$oid)}
+                sx={{
+                  paddingTop: 2,
+                  paddingBottom: 2  
+                }}
               >
                 <ListItemText
                   primary={displayDate}
@@ -64,9 +69,6 @@ export default function Details({ list, select }) {
                         variant="body2"
                         color="text.primary"
                       >
-                        Départ : Rue du Panier Fleuri, Deux-Sèvres
-                        <br />
-                        Arrivée : Chemin du Chaillot, Deux-Sèvres
                       </Typography>
                     </>
                   }
