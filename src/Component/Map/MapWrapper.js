@@ -12,7 +12,6 @@ import OSM from "ol/source/OSM";
 import { fromLonLat } from "ol/proj";
 import GeoJSON from "ol/format/GeoJSON";
 import Icon from 'ol/style/Icon';
-import Stroke from 'ol/style/Stroke';
 import Style from 'ol/style/Style';
 
 function MapWrapper(props) {
