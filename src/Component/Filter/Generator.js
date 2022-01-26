@@ -1,7 +1,14 @@
 import * as React from "react";
 import { Button, Box } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
-function Generator() {
+function Generator(props) {
+  
+  let navigate = useNavigate();
+
+  function histogramme() {
+    navigate("/histogramme");
+  }
   return (
     <Box
       sx={{
@@ -20,6 +27,9 @@ function Generator() {
           },
         }}
         variant="contained"
+        onClick={() => {
+          histogramme();
+        }}
       >
         Générer Histogramme
       </Button>

@@ -1,11 +1,13 @@
 import { Box, FormControl, Select, MenuItem, Typography } from "@mui/material";
 import * as React from "react";
+import UserProfile from "../UserProfile/UserProfile";
 
 const polluants = ["PM10", "PM2.5","O3", "NO2", "SO2"];
 
 function InputPolluant() {
   const [polluant, setPolluant] = React.useState([polluants[0]]);
 
+  
   return (
     <>
       <Typography variant="button" sx={{ display: "block" }} gutterBottom>
@@ -18,6 +20,7 @@ function InputPolluant() {
             id="polluant"
             value={polluant}
             onChange={(newPolluant) => {
+              UserProfile.setFilter(newPolluant.target.value);
               setPolluant(newPolluant.target.value);
             }}
           >

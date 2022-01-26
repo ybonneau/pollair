@@ -10,7 +10,7 @@ function Home() {
     <>
       <Navbar />
       <Filter updateTrajets={setTrajets}/>
-      <Generator />
+      <Generator trajets={trajets}/>
       <MapFrame trajets={trajets}/>
     </>
   );
