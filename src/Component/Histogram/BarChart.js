@@ -106,7 +106,7 @@ function BarChart() {
       .append("g")
       .attr("transform", "translate(0, 0)")
       .call(yAxis);
-  }, []);
+  });
 
   return (
     <Box
