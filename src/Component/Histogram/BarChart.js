@@ -8,6 +8,19 @@ function BarChart() {
   const data = UserProfile.getTrajets().find(
     (trajet) => trajet.cleaned_section._id.$oid === UserProfile.getSelect()
   );
+  
+const date = data.cleaned_section.data.start_local_dt;
+
+const displayDate =
+  date.day.toString().padStart(2, "0") +
+  "/" +
+  date.month.toString().padStart(2, "0") +
+  "/" +
+  date.year +
+  " " +
+  date.hour.toString().padStart(2, "0") +
+  ":" +
+  date.minute.toString().padStart(2, "0");
 
   const dataSet = data.locations;
   let filter;
@@ -118,6 +131,7 @@ function BarChart() {
       }}
     >
       <div className="App">
+        <h2>{UserProfile.getFilter()} - {displayDate}</h2>
         <svg id="LineChart" width = {500} height = {500}>
           <path />
         </svg>
