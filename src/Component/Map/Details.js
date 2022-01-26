@@ -18,6 +18,7 @@ export default function Details({ list, select }) {
   React.useEffect(() => {
     if(list.length) {
       setSelectedIndex(list[0].cleaned_section._id.$oid)
+      UserProfile.setSelect(list[0].cleaned_section._id.$oid)
     }
   }, [list])
   
