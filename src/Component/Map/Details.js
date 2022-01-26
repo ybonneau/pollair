@@ -1,10 +1,10 @@
 import * as React from "react";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { Typography } from "@mui/material";
 import Divider from "@mui/material/Divider";
+import UserProfile from "../UserProfile/UserProfile";
 
 export default function Details({ list, select }) {
   const [selectedIndex, setSelectedIndex] = React.useState();
@@ -12,6 +12,7 @@ export default function Details({ list, select }) {
   const handlerSelect = (id) => () => {
     setSelectedIndex(id);
     select(id);
+    UserProfile.setSelect(id)
   };
   
   React.useEffect(() => {

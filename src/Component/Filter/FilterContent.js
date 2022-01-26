@@ -90,6 +90,8 @@ function FilterContent({ polluant, trajets }) {
     await fetch("http://localhost:8080/personne/trajets/" + UserProfile.getId())
       .then((response) => response.json())
       .then((res) => {
+        console.log(res.trajets)
+        UserProfile.setTrajets(res.trajets);
         trajets(res.trajets);
       });
   }
