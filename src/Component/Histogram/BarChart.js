@@ -99,11 +99,13 @@ function BarChart() {
     // Append the Axis to our LineChart svg
     d3.select("#LineChart")
       .append("g")
+      .style("font-size", "15px")
       .attr("transform", "translate(0, " + 500 + ")")
       .call(xAxis);
 
     d3.select("#LineChart")
       .append("g")
+      .style("font-size", "15px")
       .attr("transform", "translate(0, 0)")
       .call(yAxis);
   });
