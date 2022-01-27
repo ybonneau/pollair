@@ -34,7 +34,7 @@ function Login() {
       container
       spacing={0}
       direction="column"
-      style={{ minHeight: "100vh", marginTop: 150 }}
+      marginTop={20}
     >
       <Paper
         sx={{ border: 3, borderRadius: "3px", borderColor: "#0bbbd7" }}
