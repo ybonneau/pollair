@@ -3,6 +3,7 @@ import * as d3 from "d3";
 import UserProfile from "../UserProfile/UserProfile";
 import "./BarChart.css";
 import { Box } from "@mui/material";
+import tableau from "../../Logo/tableau.jpg";
 
 function BarChart() {
   const [displayDate, setDisplayDate] = React.useState([])
@@ -145,6 +146,9 @@ function BarChart() {
         </svg>
       </div>
       }
+      <div style={{marginTop: 20}}>
+        <img src={tableau} alt="tableau" width={"80%"} />
+      </div>
     </Box>
   );
 }
