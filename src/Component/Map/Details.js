@@ -31,9 +31,10 @@ export default function Details({ list, select }) {
         bgcolor: "background.paper",
         border: 1,
         borderColor: "#d9d9d9",
-        maxHeight: "80vh",
+        maxHeight: "auto",
         overflow: "auto",
         padding: 0
+
       }}
     >
       {list !== 0 &&
